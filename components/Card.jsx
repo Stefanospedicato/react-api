@@ -5,7 +5,10 @@ const Card = (props) => {
   return (
     <div className="col-12 col-md-4">
       <div className="card my-3">
-        <img src={image} alt={title} />
+        <img
+          src="https://i1.wp.com/potafiori.com/wp-content/uploads/2020/04/placeholder.png?ssl=1"
+          alt={title}
+        />
         <div className="card-body">
           <h3 className="title-card mt-3 mb-3">{title}</h3>
           <div className="title-content">

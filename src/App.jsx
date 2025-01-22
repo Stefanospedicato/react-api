@@ -65,18 +65,9 @@ const App = () => {
     <>
       <div className="container my-3">
         <h1 className="text-center">Gestione Post</h1>
-        <div className="row">
-          {posts.map((post) => (
-            <Card
-              key={post.id}
-              post={post}
-              onDelete={() => handlerDeletePost(post.id)}
-            />
-          ))}
-        </div>
-        <div className="container">
-          <div className="card">
-            <h3>Aggiungi un nuovo Post</h3>
+        <div className="container add my-5">
+          <div className="form">
+            <p className="text-center">Aggiungi un nuovo Post</p>
           </div>
           <form action="">
             <div className="mt-3">
@@ -90,7 +81,7 @@ const App = () => {
                 value={formData.title}
                 onChange={handleInputChange}
               />
-              <label htmlFor="title">URL Immagine</label>
+              <label htmlFor="image">URL Immagine</label>
               <input
                 type="text"
                 id="name"
@@ -100,7 +91,7 @@ const App = () => {
                 value={formData.image}
                 onChange={handleInputChange}
               />
-              <label htmlFor="title">Aggiungi una descrizione</label>
+              <label htmlFor="content">Aggiungi una descrizione</label>
               <input
                 type="text"
                 id="name"
@@ -110,7 +101,7 @@ const App = () => {
                 value={formData.content}
                 onChange={handleInputChange}
               />
-              <label htmlFor="title">
+              <label htmlFor="tags">
                 Aggiungi degli tag personalizzati (separati da un trattino)
               </label>
               <input
@@ -131,6 +122,15 @@ const App = () => {
               </button>
             </div>
           </form>
+        </div>
+        <div className="row">
+          {posts.map((post) => (
+            <Card
+              key={post.id}
+              post={post}
+              onDelete={() => handlerDeletePost(post.id)}
+            />
+          ))}
         </div>
       </div>
     </>

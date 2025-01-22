@@ -5,9 +5,25 @@ i{
 h3{
   text-transform: uppercase;
   font-weight: bold;
-  color: coral;
+  color: rgb(255, 229, 30);
 }
 
 .card{
   padding: 20px;
-}
+  color: white;
+  background-color: rgb(14, 13, 9);
+  }
+
+  .form{
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .container.add{
+     background-color: rgb(255, 255, 255);
+     border: 2px solid black;
+     border-radius: 10px;
+     padding: 20px;
+  }
