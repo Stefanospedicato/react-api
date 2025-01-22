@@ -30,13 +30,28 @@ const App = () => {
     fetchPosts();
   }, []);
 
+  const handlerDeletePost = (id) => {
+    axios
+      .delete(`${baseApiUrl}/posts/${id}`)
+      .then((res) => {
+        fetchPosts();
+      })
+      .catch((e) => {
+        console.error("Errore", e);
+      });
+  };
+
   return (
     <>
       <div className="container my-3">
         <h1 className="text-center">Gestione Post</h1>
         <div className="row">
           {posts.map((post) => (
-            <Card key={post.id} post={post} />
+            <Card
+              key={post.id}
+              post={post}
+              onDelete={() => handlerDeletePost(post.id)}
+            />
           ))}
         </div>
       </div>

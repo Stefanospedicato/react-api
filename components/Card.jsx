@@ -1,5 +1,6 @@
 const Card = (props) => {
   const { title, content, image, tags } = props.post;
+  const onDelete = props.onDelete;
 
   return (
     <div className="col-12 col-md-4">
@@ -15,7 +16,7 @@ const Card = (props) => {
             <strong>TAGS: </strong>
             {tags.join(", ")}
           </div>
-          <div className="btn btn-danger mt-3">
+          <div className="btn btn-danger mt-3" onClick={onDelete}>
             <i className="fa-solid fa-trash-can"></i>Elimina
           </div>
         </div>
