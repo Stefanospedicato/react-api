@@ -38,6 +38,18 @@ const App = () => {
       });
   };
 
+  const handlerAddPost = (e) => {
+    e.preventDefault();
+    const tagsArray = formData.tags.split("-").map((tag) => tag.trim());
+
+    const newPost = { ...formData, tags: tagsArray };
+
+    axios.post(`${baseApiUrl}/posts`, newPost).then((res) => {
+      setPosts(res.data);
+      setFormData(initialDefault);
+    });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -110,6 +122,13 @@ const App = () => {
                 value={formData.tags}
                 onChange={handleInputChange}
               />
+              <button
+                className="btn btn-primary my-3"
+                type="submit"
+                onClick={handlerAddPost}
+              >
+                <i class="fa-solid fa-plus"></i>Aggiungi Post
+              </button>
             </div>
           </form>
         </div>
