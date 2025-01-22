@@ -13,6 +13,7 @@ const App = () => {
   };
 
   const [posts, setPosts] = useState([]);
+  const [formData, setFormData] = useState(initialDefault);
 
   const fetchPosts = () => {
     axios
@@ -26,10 +27,6 @@ const App = () => {
       });
   };
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
   const handlerDeletePost = (id) => {
     axios
       .delete(`${baseApiUrl}/posts/${id}`)
@@ -41,6 +38,17 @@ const App = () => {
       });
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
   return (
     <>
       <div className="container my-3">
@@ -53,6 +61,57 @@ const App = () => {
               onDelete={() => handlerDeletePost(post.id)}
             />
           ))}
+        </div>
+        <div className="container">
+          <div className="card">
+            <h3>Aggiungi un nuovo Post</h3>
+          </div>
+          <form action="">
+            <div className="mt-3">
+              <label htmlFor="title">Titolo del Post</label>
+              <input
+                type="text"
+                id="name"
+                name="title"
+                className="form-control"
+                placeholder="Aggiungi titolo..."
+                value={formData.title}
+                onChange={handleInputChange}
+              />
+              <label htmlFor="title">URL Immagine</label>
+              <input
+                type="text"
+                id="name"
+                name="image"
+                className="form-control"
+                placeholder="Inserisci URL"
+                value={formData.image}
+                onChange={handleInputChange}
+              />
+              <label htmlFor="title">Aggiungi una descrizione</label>
+              <input
+                type="text"
+                id="name"
+                name="content"
+                className="form-control"
+                placeholder="Aggiungi descrizione..."
+                value={formData.content}
+                onChange={handleInputChange}
+              />
+              <label htmlFor="title">
+                Aggiungi degli tag personalizzati (separati da un trattino)
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="tags"
+                className="form-control"
+                placeholder="Es. Dolci - Cannella - Cioccolato"
+                value={formData.tags}
+                onChange={handleInputChange}
+              />
+            </div>
+          </form>
         </div>
       </div>
     </>
